@@ -1,26 +1,116 @@
-\documentclass{optica-article}
+\documentclass[journal,onecolumn]{IEEEtran}
 
-\journal{opticajournal} % for journals or Optica Open
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
 
-\articletype{Research Article}
 
-\usepackage{lineno}
-\linenumbers % Turn off line numbering for Optica Open preprint submissions.
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
 
 \begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{An AI-based Procedure to Literature Review: an Application to Vaccine Supply Chains}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+\author{Fabian Castaño, Julio Goez, and Nubia Velasco}
 
-\title{An AI based procedure to literature review: the case of Vaccine Supply Chain}
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
 
-\author{Fabian Castaño,\authormark{1} Julio Goez,\authormark{2,*} and Nubia Velasco\authormark{3}}
-\address{\authormark{1} Applied Intelligence Team, Mercado Libre\\ \authormark{2}NHH, Norwegian School of Economics, Department of Business and Management Science\\ \authormark{3}School of Management, Universidad de los Andes.}
+
+
+% The paper headers
+\markboth{28th International Conference on Production Research, ICPR 2025, July 12-17, 2025, Chía, Colombia}%
+{Castaño \MakeLowercase{\textit{et al.}}: An AI-based Procedure to Literature Review: an Application to Vaccine Supply Chains}
+
+
+% make the title area
+\maketitle
+
+s.
+\begin{IEEEkeywords}
+Vaccine Supply Chains, LLMs, Artificial Intelligence, Literature review
+\end{IEEEkeywords}
+
+\begin{abstract}
+    This study presents an AI-assisted methodology for literature review applied to vaccine supply chains (VSC). We developed a five-stage approach combining AI tools with expert validation to analyze VSC research with an operations research perspective. From 219 papers (2000-2024), we identified 96 for comprehensive review, revealing three dominant problems: Allocation, Inventory Management, and Distribution—typically addressed through coverage and equity considerations requiring multi-objective approaches. Our contribution is both methodological (demonstrating AI's effectiveness in accelerating literature reviews while maintaining academic rigor) and substantive (synthesizing VSC research and identifying knowledge gaps). This framework offers a reproducible approach balancing technological efficiency with domain expertise in operations research.
+\end{abstract}
+
 
 \section{Introduction}
 
-This research addresses both methodological and academic objectives. The first objective is to leverage the extensive use of Artificial Intelligence (AI) in academic research to enhance efficiency. The second objective is to respond to the growing interest in Vaccine Supply Chain (VSC) research following the COVID-19 pandemic. 
+This research addresses both methodological and academic objectives. First, we leverage artificial intelligence (AI) tools to enhance the efficiency of academic literature reviews. Second, we respond to the growing interest in Vaccine Supply Chain (VSC) research that emerged following the COVID-19 pandemic.
 
-To achieve these objectives, this study employs a mixed-methods approach, combining qualitative and quantitative research techniques. This allows for a comprehensive analysis of VSC and the development of a conceptual framework supported by AI tools. The primary goal is to accelerate the literature review process, identify key concepts, and evaluate theories related to the research topic. 
+Our study employs a mixed-methods approach, combining qualitative and quantitative research techniques to provide a comprehensive analysis of VSC literature. This approach facilitates the development of a conceptual framework supported by AI tools while accelerating the literature review process. Through this methodology, we identify key concepts and evaluate theories related to vaccine supply chains.
 
-The methodology is designed to ensure systematic, rigorous, and reliable outcomes. To ensure accuracy and relevance, the AI-generated insights will be validated by experts, maintaining scientific robustness and reproducibility.
+The methodology is designed with three core principles: systematic organization, research rigor, and reliable outcomes. To maintain scientific robustness and reproducibility, all AI-generated insights undergo validation by domain experts. This validation process ensures that technological efficiency does not compromise academic quality.
+
 \section{Methods and preliminary results}
 
 The proposed review follows five stages: 
@@ -31,48 +121,23 @@ The proposed review follows five stages:
 (v) categorization and data synthesis.
 
 The search was limited to the Science Direct, Scopus, and PubMed databases, focusing on papers published between 2000 and July 2024 related to VSC, Operations Management, and Operational Research. This search yielded 219 papers. Ryyan AI and SciSpace were then used to categorize the documents and extract key information, including the addressed problem, solution approach, methodology, findings, and practical implications. The extracted data were validated and evaluated using a scoring system, narrowing the review to 96 papers. Finally, VosViewer performed a cluster analysis, identifying six dominant themes: vaccine transportation, VSC, optimization, simulation, and allocation.
-The search was limited to Science Direct, Scopus, and PubMed databases, and to papers between 2000 and July 2024 focused on VSC, Operations Management, and Operational Research. This yields 219 papers. Next, Ryyan AI and SciSpace were employed to categorize the documents and extract key information as addressed problem, solution approach, methodology, findings, and practical implications. The extracted data underwent validation and a scoring-based evaluation limiting the review to 96 papers. Finally, VosViewer was used to perform a cluster analysis identifying six dominant themes: vaccine transportation, VSC, optimization, simulation, allocation.
+
 
 \section{Findings}
 
-The use of a pure AI approach highlighted the limitation of the LLM. It worked well to extract general ideas, but not to extract papers contribution. Even though there were elements that matched the human extracted insights. These coincidences were of great value to refine the author's reasoning process for filtering and classifying papers. The panel of experts’ opinion is crucial to define the classification of the literature, who identified a possible classification of the literature following the criteria of objectives, application, and solution methods \textbf{FALTA HALLAZGOS EN RESEARCH EN VSC}.
+The use of a pure AI approach highlighted the limitation of the LLM. It worked well to extract general ideas, but not to extract papers' contributions. Even though there were elements that matched the human extracted insights. These coincidences were of great value to refine the author's reasoning process for filtering and classifying papers. The panel of experts’ opinion is crucial to define the classification of the literature, who identified a possible classification of the literature following the criteria of objectives, application, and solution methods Regarding VSC literature,  three recurrent problems were identified: Allocation, Inventory Management, and Distribution. These problems are primarily addressed considering two aspects: coverage and equity. The nature of the problem inherently leads to multi-objective approaches.
 
 \section{Conclusions}
 
-This work contribution is twofold. First, we aim to provide a review of the literature on VSC focusing on the contributions of OR into the field, with a special angle on the lessons learned from COVID-19. Second, we tested an approach to the review process using AI to validate and clarify the capabilities of the technology and to what extent its contribution could complement human work. This systematic approach combines AI-driven efficiency with expert validation, ensuring a robust and insightful review of vaccine supply chain research. By integrating quantitative and qualitative methods, the study provides a comprehensive analysis while maintaining scientific rigor and reproducibility. Three recurrent problems were identified: Allocation, Inventory Management, and Distribution. These problems are primarily addressed considering two aspects: coverage and equity. The nature of the problem inherently leads to multi-objective approaches.
+This work contribution is twofold. First, we aim to provide a review of the literature on VSC focusing on the contributions of OR into the field, with a special angle on the lessons learned from COVID-19. Second, we tested an approach to the review process using AI to validate and clarify the capabilities of the technology and to what extent its contribution could complement human work. This systematic approach combines AI-driven efficiency with expert validation, ensuring a robust and insightful review of vaccine supply chain research. By integrating quantitative and qualitative methods, the study provides a comprehensive analysis while maintaining scientific rigor and reproducibility.
 
- 
-%%%%%%%%%% If using BibTeX: 
-\bibliography{sample}
 
-%%%%%%%%%% If preparing manually:
-% \begin{thebibliography}{1}
-% \newcommand{\enquote}[1]{``#1''}
 
-% \bibitem{Zhang:14}
-% Y.~Zhang, S.~Qiao, L.~Sun, Q.~W. Shi, W.~Huang, L.~Li, and Z.~Yang,
-%   \enquote{Photoinduced active terahertz metamaterials with nanostructured
-%   vanadium dioxide film deposited by sol-gel method,}
-%   {\protect\JournalTitle{Optics Express}} \textbf{22}, 11070--11078 (2014).
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
 
-% \bibitem{Optica}
-% {Optica}, \enquote{{Optica Publishing Group},}
-%   \url{http://www.opg.optica.org}.
 
-% \bibitem{FORSTER2007}
-% P.~Forster, V.~Ramaswamy, P.~Artaxo, T.~Bernsten, R.~Betts, D.~Fahey,
-%   J.~Haywood, J.~Lean, D.~Lowe, G.~Myhre, J.~Nganga, R.~Prinn, G.~Raga,
-%   M.~Schulz, and R.~V. Dorland, \enquote{Changes in atmospheric consituents and
-%   in radiative forcing,} in \enquote{Climate Change 2007: The Physical Science
-%   Basis. Contribution of Working Group 1 to the Fourth Assesment Report of
-%   Intergovernmental Panel on Climate Change,}  S.~Solomon, D.~Qin, M.~Manning,
-%   Z.~Chen, M.~Marquis, K.~B. Averyt, M.~Tignor, and H.~L. Miler, eds.
-%   (Cambridge University Press, 2007).
 
-% \end{thebibliography}
-
+% that's all folks
 \end{document}
-
-
-
-
